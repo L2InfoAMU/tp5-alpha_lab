@@ -27,5 +27,14 @@ public class PaletteRasterImage  {
         return palette.get(indexOfPixel);
     }
 
+    public void setPixelColor(Color color, int x, int y){
+
+        if(!palette.contains(color))
+            palette.add(color);
+
+        indexesOfColors[x][y] = palette.indexOf(color);
+
+    }
+
 
 }
