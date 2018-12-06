@@ -58,6 +58,21 @@ public class PaletteRasterImage  {
         }
     }
 
+    private void setPixelsColor(Color color){
+
+        // TODO (?) : remove palette (if so, remove "if")
+
+        if(!palette.contains(color))
+            palette.add(color);
+
+        for(int i=0; i<width;i++){
+            for(int j = 0; j<height; j++){
+                setPixelsColor(color, i, j);
+            }
+        }
+
+    }
+
     public int getWidth(){
         return width;
     }
