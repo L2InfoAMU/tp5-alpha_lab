@@ -21,6 +21,10 @@ public class BruteRasterImage {
         return pixels[x][y];
     }
 
+    private void setPixelsColor(Color[][] pixels){
+        this.pixels = pixels;
+    }
+
 
 
 }
