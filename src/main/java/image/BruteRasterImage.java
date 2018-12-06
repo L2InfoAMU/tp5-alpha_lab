@@ -33,4 +33,13 @@ public class BruteRasterImage {
         }
     }
 
+    public int getWidth(){
+        return this.width;
+    }
+
+    public int getHeight(){
+        return this.height;
+    }
+
+
 }
