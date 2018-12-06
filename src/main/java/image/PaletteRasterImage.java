@@ -58,7 +58,7 @@ public class PaletteRasterImage implements Image {
 
         for(int i=0; i<width;i++){
             for(int j=0; j<height;j++){
-                Color currentColor = getPixelColor(i,j);
+                Color currentColor = pixels[i][j];
         //        if(!palette.contains(currentColor))
         //            palette.add(currentColor);
         //        int indexOfCurrentColor = palette.indexOf(currentColor);
