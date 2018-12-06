@@ -13,8 +13,6 @@ public class PaletteRasterImage  {
     private int height;
 
 
-
-
     public void createRepresentation(){
         palette = new ArrayList<Color>();
         indexesOfColors = new int[width][height];
@@ -35,6 +33,24 @@ public class PaletteRasterImage  {
         indexesOfColors[x][y] = palette.indexOf(color);
 
     }
+
+    private void setPixelsColor(Color[][] pixels){
+
+        // TODO (?) : remove palette
+
+        for(int i=0; i<width;i++){
+            for(int j=0; j<height;j++){
+                Color currentColor = getPixelColor(i,j);
+                if(!palette.contains(currentColor))
+                    palette.add(currentColor);
+                int indexOfCurrentColor = palette.indexOf(currentColor);
+                setPixelColor(currentColor, i,j);
+            }
+        }
+    }
+
+
+
 
 
 }
