@@ -9,4 +9,8 @@ public class BruteRasterImage {
     private Color[][] pixels;
 
 
+    public void createRepresentation(){
+        pixels = new Color[width][height];
+    }
+
 }
