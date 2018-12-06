@@ -50,9 +50,9 @@ public class PaletteRasterImage  {
         for(int i=0; i<width;i++){
             for(int j=0; j<height;j++){
                 Color currentColor = getPixelColor(i,j);
-                if(!palette.contains(currentColor))
-                    palette.add(currentColor);
-                int indexOfCurrentColor = palette.indexOf(currentColor);
+        //        if(!palette.contains(currentColor))
+        //            palette.add(currentColor);
+        //        int indexOfCurrentColor = palette.indexOf(currentColor);
                 setPixelColor(currentColor, i,j);
             }
         }
