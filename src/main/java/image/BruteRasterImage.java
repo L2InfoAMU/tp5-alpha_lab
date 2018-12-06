@@ -17,4 +17,10 @@ public class BruteRasterImage {
         pixels[x][y] = color;
     }
 
+    public Color getPixelColor(int x, int y){
+        return pixels[x][y];
+    }
+
+
+
 }
