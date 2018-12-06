@@ -20,7 +20,12 @@ public class PaletteRasterImage  {
         indexesOfColors = new int[width][height];
     }
 
-
+    public Color getPixelColor(int x, int y){
+        int indexOfPixel = indexesOfColors[x][y];
+        if(indexOfPixel >= palette.size())
+            return null;
+        return palette.get(indexOfPixel);
+    }
 
 
 }
