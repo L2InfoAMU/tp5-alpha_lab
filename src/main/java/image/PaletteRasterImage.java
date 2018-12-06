@@ -13,6 +13,15 @@ public class PaletteRasterImage  {
     private int height;
 
 
+    public PaletteRasterImage(Color color, int width, int height){
+
+        setHeight(height);
+        setWidth(width);
+        createRepresentation();
+        setPixelsColor(color);
+
+    }
+
     public void createRepresentation(){
         palette = new ArrayList<Color>();
         indexesOfColors = new int[width][height];
