@@ -13,4 +13,8 @@ public class BruteRasterImage {
         pixels = new Color[width][height];
     }
 
+    public void setPixelColor(Color color, int x, int y){
+        pixels[x][y] = color;
+    }
+
 }
