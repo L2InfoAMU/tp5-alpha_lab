@@ -43,7 +43,7 @@ public class PaletteRasterImage  {
 
     }
 
-    private void setPixelsColor(Color[][] pixels){
+    public void setPixelsColor(Color[][] pixels){
 
         // TODO (?) : remove palette
 
