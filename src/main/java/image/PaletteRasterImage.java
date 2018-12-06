@@ -24,13 +24,12 @@ public class PaletteRasterImage implements Image {
 
     public PaletteRasterImage(Color[][] pixels){
 
-        setHeight(height);
-        setWidth(width);
+        setHeight(pixels[0].length);
+        setWidth(pixels.length);
         createRepresentation();
         setPixelsColor(pixels);
 
     }
-
 
     public void createRepresentation(){
         palette = new ArrayList<Color>();
