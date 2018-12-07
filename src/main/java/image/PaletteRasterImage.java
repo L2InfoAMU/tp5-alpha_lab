@@ -66,10 +66,8 @@ public class PaletteRasterImage implements Image {
 
     private void setPixelsColor(Color color){
 
-        // TODO (?) : remove palette (if so, remove "if")
-
-        if(!palette.contains(color))
-            palette.add(color);
+        palette.clear();
+        palette.add(color);
 
         for(int i=0; i<width;i++){
             for(int j = 0; j<height; j++){
