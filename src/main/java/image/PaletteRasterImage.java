@@ -55,8 +55,6 @@ public class PaletteRasterImage implements Image {
             throw new IllegalArgumentException("x or y cannot be outside the array bonds");
 
         int indexOfPixel = indexesOfColors[x][y];
-        if(indexOfPixel >= palette.size())
-            throw new IndexOutOfBoundsException("index found on the array is greater than the size of the ArrayList");
         return palette.get(indexOfPixel);
     }
 
