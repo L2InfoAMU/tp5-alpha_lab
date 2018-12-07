@@ -1,6 +1,7 @@
 package image;
 
 import javafx.scene.paint.Color;
+import util.Matrices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +38,22 @@ public class PaletteRasterImage implements Image {
     }
 
     public Color getPixelColor(int x, int y){
+
+        if(x<0 || y<0 || x>=indexesOfColors.length || y>=indexesOfColors[0].length)
+            throw new IllegalArgumentException("x or y cannot be outside the array bonds");
+
         int indexOfPixel = indexesOfColors[x][y];
         if(indexOfPixel >= palette.size())
-            return null;
+            throw new IndexOutOfBoundsException("index found on the array is greater than the size of the ArrayList");
         return palette.get(indexOfPixel);
     }
 
     public void setPixelColor(Color color, int x, int y){
+
+        if (color == null)
+            throw new NullPointerException("Color cannot be null");
+        if(x<0 || y<0 || x>=indexesOfColors.length || y>=indexesOfColors[0].length)
+            throw new IllegalArgumentException("x or y cannot be outside the array bonds");
 
         if(!palette.contains(color))
             palette.add(color);
@@ -54,6 +64,9 @@ public class PaletteRasterImage implements Image {
 
     public void setPixelsColor(Color[][] pixels){
 
+        Matrices.requiresNonNull(pixels);
+        Matrices.requiresNonZeroDimensions(pixels);
+        Matrices.requiresRectangularMatrix(pixels);
         palette.clear();
 
         for(int i=0; i<width;i++){
@@ -65,6 +78,8 @@ public class PaletteRasterImage implements Image {
     }
 
     private void setPixelsColor(Color color){
+        if (color == null)
+            throw new NullPointerException("Color cannot be null");
 
         palette.clear();
         palette.add(color);
@@ -86,10 +101,14 @@ public class PaletteRasterImage implements Image {
     }
 
     protected void setWidth(int width){
+        if(width < 0)
+            throw new IllegalArgumentException("width cannot be less than 0");
         this.width = width;
     }
 
     protected void setHeight(int height){
+        if(height < 0)
+            throw new IllegalArgumentException("height cannot be less than 0");
         this.height = height;
     }
 
