@@ -16,17 +16,29 @@ public class PaletteRasterImage implements Image {
 
     public PaletteRasterImage(Color color, int width, int height){
 
+        if(width < 0)
+            throw new IllegalArgumentException("width cannot be less than 0");
+        if(height < 0)
+            throw new IllegalArgumentException("height cannot be less than 0");
+        if (color == null)
+            throw new NullPointerException("Color cannot be null");
+
         setHeight(height);
         setWidth(width);
+
         createRepresentation();
         setPixelsColor(color);
-
     }
 
     public PaletteRasterImage(Color[][] pixels){
 
+        Matrices.requiresNonNull(pixels);
+        Matrices.requiresNonZeroDimensions(pixels);
+        Matrices.requiresRectangularMatrix(pixels);
+
         setHeight(pixels[0].length);
         setWidth(pixels.length);
+
         createRepresentation();
         setPixelsColor(pixels);
 
