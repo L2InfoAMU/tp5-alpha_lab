@@ -68,7 +68,7 @@ public class Matrices {
     }
 
     /**
-     * Ensures that the given coordinates are not outside the matrix bonds.
+     * Ensures that the given coordinates are not outside the given matrix bonds.
      *
      * @throws IllegalArgumentException if the coordinates are outside of the matrix bounds
      * @param matrix the matrix of int
