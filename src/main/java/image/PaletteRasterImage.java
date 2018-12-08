@@ -3,50 +3,29 @@ package image;
 import javafx.scene.paint.Color;
 import util.Matrices;
 
+import java.awt.image.Raster;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaletteRasterImage implements Image {
+public class PaletteRasterImage extends RasterImage {
 
     private List<Color> palette;
     private int[][] indexesOfColors;
-    private int width;
-    private int height;
 
 
     public PaletteRasterImage(Color color, int width, int height){
-
-        if(width < 0)
-            throw new IllegalArgumentException("width cannot be less than 0");
-        if(height < 0)
-            throw new IllegalArgumentException("height cannot be less than 0");
-        if (color == null)
-            throw new NullPointerException("Color cannot be null");
-
-        setHeight(height);
-        setWidth(width);
-
-        createRepresentation();
-        setPixelsColor(color);
+        super(color, width, height);
     }
 
     public PaletteRasterImage(Color[][] pixels){
 
-        Matrices.requiresNonNull(pixels);
-        Matrices.requiresNonZeroDimensions(pixels);
-        Matrices.requiresRectangularMatrix(pixels);
-
-        setHeight(pixels[0].length);
-        setWidth(pixels.length);
-
-        createRepresentation();
-        setPixelsColor(pixels);
+        super(pixels);
 
     }
 
     public void createRepresentation(){
         palette = new ArrayList<Color>();
-        indexesOfColors = new int[width][height];
+        indexesOfColors = new int[this.getWidth()][this.getHeight()];
     }
 
     public Color getPixelColor(int x, int y){
@@ -59,8 +38,7 @@ public class PaletteRasterImage implements Image {
 
     public void setPixelColor(Color color, int x, int y){
 
-        if (color == null)
-            throw new NullPointerException("Color cannot be null");
+        requiresNonNullColor(color);
         Matrices.requiresInsideMatrixBonds(indexesOfColors, x, y);
 
         if(!palette.contains(color))
@@ -77,47 +55,26 @@ public class PaletteRasterImage implements Image {
         Matrices.requiresRectangularMatrix(pixels);
         palette.clear();
 
-        for(int i=0; i<width;i++){
-            for(int j=0; j<height;j++){
+        for(int i=0; i<this.getWidth();i++){
+            for(int j=0; j<this.getHeight();j++){
                 Color currentColor = pixels[i][j];
                 setPixelColor(currentColor, i,j);
             }
         }
     }
 
-    private void setPixelsColor(Color color){
+    public void setPixelsColor(Color color){
         if (color == null)
             throw new NullPointerException("Color cannot be null");
 
         palette.clear();
         palette.add(color);
 
-        for(int i=0; i<width;i++){
-            for(int j = 0; j<height; j++){
+        for(int i=0; i<this.getWidth();i++){
+            for(int j = 0; j<this.getHeight(); j++){
                 setPixelColor(color, i, j);
             }
         }
 
     }
-
-    public int getWidth(){
-        return width;
-    }
-
-    public int getHeight(){
-        return height;
-    }
-
-    protected void setWidth(int width){
-        if(width < 0)
-            throw new IllegalArgumentException("width cannot be less than 0");
-        this.width = width;
-    }
-
-    protected void setHeight(int height){
-        if(height < 0)
-            throw new IllegalArgumentException("height cannot be less than 0");
-        this.height = height;
-    }
-
 }
