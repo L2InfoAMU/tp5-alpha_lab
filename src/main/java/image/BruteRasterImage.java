@@ -39,8 +39,7 @@ public class BruteRasterImage extends RasterImage{
     }
 
     public void setPixelsColor(Color color){
-        if (color == null)
-            throw new NullPointerException("Color cannot be null");
+        requiresNonNullColor(color);
 
         for(int i=0; i<this.getWidth();i++){
             for(int j=0; j<this.getHeight();j++){

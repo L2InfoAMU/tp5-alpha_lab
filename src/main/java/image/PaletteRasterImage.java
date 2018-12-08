@@ -64,8 +64,7 @@ public class PaletteRasterImage extends RasterImage {
     }
 
     public void setPixelsColor(Color color){
-        if (color == null)
-            throw new NullPointerException("Color cannot be null");
+        requiresNonNullColor(color);
 
         palette.clear();
         palette.add(color);
