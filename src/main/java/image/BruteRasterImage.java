@@ -44,16 +44,14 @@ public class BruteRasterImage implements Image{
     }
 
     public Color getPixelColor(int x, int y){
-        if(x<0 || y<0 || x>=pixels.length || y>=pixels[0].length)
-            throw new IllegalArgumentException("x or y cannot be outside the array bonds");
+        Matrices.requiresInsideMatrixBonds(pixels, x, y);
         return pixels[x][y];
     }
 
     public void setPixelColor(Color color, int x, int y){
         if (color == null)
             throw new NullPointerException("Color cannot be null");
-        if(x<0 || y<0 || x>=pixels.length || y>=pixels[0].length)
-            throw new IllegalArgumentException("x or y cannot be outside the array bonds");
+        Matrices.requiresInsideMatrixBonds(pixels, x, y);
         pixels[x][y] = color;
     }
 

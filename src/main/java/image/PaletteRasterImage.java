@@ -51,8 +51,7 @@ public class PaletteRasterImage implements Image {
 
     public Color getPixelColor(int x, int y){
 
-        if(x<0 || y<0 || x>=indexesOfColors.length || y>=indexesOfColors[0].length)
-            throw new IllegalArgumentException("x or y cannot be outside the array bonds");
+        Matrices.requiresInsideMatrixBonds(indexesOfColors, x, y);
 
         int indexOfPixel = indexesOfColors[x][y];
         return palette.get(indexOfPixel);
@@ -62,8 +61,7 @@ public class PaletteRasterImage implements Image {
 
         if (color == null)
             throw new NullPointerException("Color cannot be null");
-        if(x<0 || y<0 || x>=indexesOfColors.length || y>=indexesOfColors[0].length)
-            throw new IllegalArgumentException("x or y cannot be outside the array bonds");
+        Matrices.requiresInsideMatrixBonds(indexesOfColors, x, y);
 
         if(!palette.contains(color))
             palette.add(color);
