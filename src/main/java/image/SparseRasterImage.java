@@ -30,46 +30,35 @@ public class SparseRasterImage extends RasterImage {
 
     public Color getPixelColor(int x, int y)
     {
-        requiresValidCoordinates(x, y);
+        requiresValidCoordinates(x,y);
         Point point = new Point(x,y);
         requiresPresenceOfPoint(point);
         return pixelsMap.get(point);
     }
 
-    public void setPixelColor(Color color, int x, int y)
-    {
+    public Color getPixel(int x, int y){
+        Point point = new Point(x,y);
+        requiresPresenceOfPoint(point);
+        return pixelsMap.get(point);
+    }
+
+    public void setPixelColor(Color color, int x, int y) {
         requiresNonNullColor(color);
         requiresValidCoordinates(x,y);
         Point point = new Point(x,y);
         pixelsMap.put(point,color);
     }
 
-    public void setPixelsColor(Color [][] pixels) {
-
-        Matrices.requiresNonNull(pixels);
-        Matrices.requiresNonZeroDimensions(pixels);
-        Matrices.requiresRectangularMatrix(pixels);
-
+    public void clearPixels(){
         pixelsMap.clear();
+    }
 
-        for(int i=0; i<this.getWidth(); i++){
-            for (int j=0; j<this.getHeight();j++) {
-                Color currentColor = pixels[i][j];
-                setPixelColor(currentColor,i,j);
-            }
-        }
+    public void setPixelsColor(Color [][] pixels) {
+        super.setPixelsColor(pixels);
     }
 
     public void setPixelsColor(Color color) {
-        requiresNonNullColor(color);
-
-        pixelsMap.clear();
-
-        for(int i=0; i<this.getWidth();i++) {
-            for(int j=0; j<this.getHeight();j++) {
-                setPixelColor(color,i,j);
-            }
-        }
+        super.setPixelsColor(color);
     }
 
 

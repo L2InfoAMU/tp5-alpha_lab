@@ -21,31 +21,26 @@ public class BruteRasterImage extends RasterImage{
     }
 
     public Color getPixelColor(int x, int y){
-        Matrices.requiresInsideMatrixBonds(pixels, x, y);
+        requiresValidCoordinates(x,y);
         return pixels[x][y];
     }
 
     public void setPixelColor(Color color, int x, int y){
         requiresNonNullColor(color);
-        Matrices.requiresInsideMatrixBonds(pixels, x, y);
+        requiresValidCoordinates(x,y);
         pixels[x][y] = color;
     }
 
+    public void clearPixels(){
+        createRepresentation();
+    }
+
     public void setPixelsColor(Color[][] pixels){
-        Matrices.requiresNonNull(pixels);
-        Matrices.requiresNonZeroDimensions(pixels);
-        Matrices.requiresRectangularMatrix(pixels);
-        this.pixels = pixels.clone();
+        super.setPixelsColor(pixels);
     }
 
     public void setPixelsColor(Color color){
-        requiresNonNullColor(color);
-
-        for(int i=0; i<this.getWidth();i++){
-            for(int j=0; j<this.getHeight();j++){
-                setPixelColor(color,i,j);
-            }
-        }
+        super.setPixelsColor(color);
     }
 
 }
