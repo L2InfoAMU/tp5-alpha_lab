@@ -18,7 +18,7 @@ public class SparseRasterImage extends RasterImage {
         super(pixels);
     }
 
-    public void createrepresentation()
+    public void createRepresentation()
     {
         pixelsMap = new HashMap<>();
     }

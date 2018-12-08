@@ -25,7 +25,7 @@ public abstract class RasterImage implements Image {
 
     protected void requiresValidCoordinates(int x, int y){
         if(x<0 || y<0 || x>=this.getWidth() || y>=this.getHeight())
-            throw new IllegalArgumentException("x or y outside window bounds")
+            throw new IllegalArgumentException("x or y outside window bounds");
     }
 
     public RasterImage(Color color, int width, int height){
