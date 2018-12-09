@@ -43,10 +43,6 @@ public class PaletteRasterImage extends RasterImage {
         palette.clear();
     }
 
-    public void setPixelsColor(Color[][] pixels){
-        super.setPixelsColor(pixels);
-    }
-
     public void setPixelsColor(Color color){
         super.setPixelsColor(color);
         palette.add(color);
