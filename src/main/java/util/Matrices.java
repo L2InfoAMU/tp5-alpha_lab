@@ -55,32 +55,6 @@ public class Matrices {
     }
 
     /**
-     * Ensures that the given coordinates are not outside the matrix bonds.
-     *
-     * @throws IllegalArgumentException if the coordinates are outside of the matrix bounds
-     * @param matrix the matrix of objects
-     * @param x the first coordinate of the matrix
-     * @param y the second coordinate of the matrix
-     */
-    public  static void requiresInsideMatrixBonds(Object[][] matrix, int x, int y) {
-        if(x<0 || y<0 || x>=matrix.length || y>=matrix[0].length)
-            throw new IllegalArgumentException("x or y cannot be outside the matrix bonds");
-    }
-
-    /**
-     * Ensures that the given coordinates are not outside the given matrix bonds.
-     *
-     * @throws IllegalArgumentException if the coordinates are outside of the matrix bounds
-     * @param matrix the matrix of int
-     * @param x the first coordinate of the matrix
-     * @param y the second coordinate of the matrix
-     */
-    public  static void requiresInsideMatrixBonds(int[][] matrix, int x, int y) {
-        if(x<0 || y<0 || x>=matrix.length || y>=matrix[0].length)
-            throw new IllegalArgumentException("x or y cannot be outside the matrix bonds");
-    }
-
-    /**
      * Give the number of rows of a matrix.
      *
      * @param matrix the matrix.
