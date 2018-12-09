@@ -1,6 +1,8 @@
 package image;
 
 import javafx.scene.paint.Color;
+import util.Pixel;
+import util.Window;
 
 public class Rectangle implements Shape {
 
@@ -8,7 +10,9 @@ public class Rectangle implements Shape {
     private Point p1,p2;
 
     public Rectangle(int x, int y, int width, int height, Color color){
-        if(color == null) throw new IllegalArgumentException("Color cannot be null");
+        Pixel.requiresNonNullColor(color);
+        if(width <= 0 || height <=0)
+            throw new IllegalArgumentException("width or height less or equal to 0, shape needs to be a rectangle")
 
         this.color = color;
         p1 = new Point(x,y);

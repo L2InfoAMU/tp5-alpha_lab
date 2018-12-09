@@ -14,6 +14,7 @@ public class VectorImage implements Image {
 
         if(shapes == null) throw new
                 IllegalArgumentException("Shapes cannot be null");
+
         Window.requiresStrictPositiveHeight(height);
         Window.requiresStrictPositiveWidth(width);
 
@@ -23,10 +24,11 @@ public class VectorImage implements Image {
     }
 
     public Color getPixelColor(int x, int y){
+
         Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
-        Point p = new Point(x,y);
+
         for (Shape shape : shapes) {
-            if (shape.contains(p))
+            if (shape.contains(new Point(x,y)))
                 return shape.getColor();
         }
         return Color.WHITE;
