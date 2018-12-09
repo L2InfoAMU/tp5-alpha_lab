@@ -3,7 +3,7 @@ package image;
 import javafx.scene.paint.Color;
 import util.Matrices;
 import util.Window;
-import util.Pixel;
+import util.PixelColor;
 
 public abstract class RasterImage implements Image {
 
@@ -12,7 +12,7 @@ public abstract class RasterImage implements Image {
 
 
     public RasterImage(Color color, int width, int height){
-        Pixel.requiresNonNullColor(color);
+        PixelColor.requiresNonNullColor(color);
         Window.requiresStrictPositiveHeight(height);
         Window.requiresStrictPositiveWidth(width);
 
@@ -54,7 +54,7 @@ public abstract class RasterImage implements Image {
 
 
     public void setPixelsColor(Color color){
-        Pixel.requiresNonNullColor(color);
+        PixelColor.requiresNonNullColor(color);
 
         clearPixels();
         for(int i=0; i<this.getWidth();i++){

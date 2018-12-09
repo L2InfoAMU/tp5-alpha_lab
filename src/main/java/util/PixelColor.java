@@ -2,7 +2,7 @@ package util;
 
 import javafx.scene.paint.Color;
 
-public class Pixel {
+public class PixelColor {
 
     public static void requiresNonNullColor(Color color){
         if (color == null)

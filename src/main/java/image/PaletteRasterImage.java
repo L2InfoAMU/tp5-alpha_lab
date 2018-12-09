@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 import util.Window;
-import util.Pixel;
+import util.PixelColor;
 
 public class PaletteRasterImage extends RasterImage {
 
@@ -32,7 +32,7 @@ public class PaletteRasterImage extends RasterImage {
     }
 
     public void setPixelColor(Color color, int x, int y){
-        Pixel.requiresNonNullColor(color);
+        PixelColor.requiresNonNullColor(color);
         Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
         if(!palette.contains(color)) palette.add(color);
         indexesOfColors[x][y] = palette.indexOf(color);

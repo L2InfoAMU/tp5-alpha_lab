@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import java.util.HashMap;
 import java.util.Map;
 import util.Window;
-import util.Pixel;
+import util.PixelColor;
 
 public class SparseRasterImage extends RasterImage {
 
@@ -38,7 +38,7 @@ public class SparseRasterImage extends RasterImage {
     }
 
     public void setPixelColor(Color color, int x, int y) {
-        Pixel.requiresNonNullColor(color);
+        PixelColor.requiresNonNullColor(color);
         Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
         Point point = new Point(x,y);
         pixelsMap.put(point,color);
