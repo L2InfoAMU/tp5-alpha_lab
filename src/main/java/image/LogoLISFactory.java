@@ -20,7 +20,7 @@ public class LogoLISFactory implements ImageFactory{
         List<Shape> list = new ArrayList<>();
 
         for (int i = 0; i<colors.length; i++)
-            list.add(new Rectangle(xCoordinates[i], yCoordinates[i], widths[i], heights[i], colors[i]));
+            list.add(new Rectangle(new Point(xCoordinates[i], yCoordinates[i]), widths[i], heights[i], colors[i]));
 
         return new VectorImage(list, 860, 340);
     }

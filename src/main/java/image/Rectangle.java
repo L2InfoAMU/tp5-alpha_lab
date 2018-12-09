@@ -1,20 +1,20 @@
 package image;
 
 import javafx.scene.paint.Color;
-import util.PixelColor;
+import util.Window;
 
 public class Rectangle implements Shape {
 
     private Color color;
     private Point p1,p2;
 
-    public Rectangle(int x, int y, int width, int height, Color color){
-        PixelColor.requiresNonNullColor(color);
+    public Rectangle(Point point, int width, int height, Color color){
+        Window.requiresNonNullColor(color);
         if(width <= 0 || height <=0)
             throw new IllegalArgumentException("width or height less or equal to 0, shape needs to be a rectangle");
 
         this.color = color;
-        p1 = new Point(x,y);
+        p1 = point;
         p2 = new Point(p1.x+width, p1.y + height);
     }
 

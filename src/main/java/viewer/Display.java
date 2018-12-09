@@ -55,13 +55,13 @@ public class Display implements Initializable {
 
         for (int i = 0; i < pixelWidth; i++) {
             for (int j = 0; j < pixelHeight; j++) {
-                renderPixel(i, j, pixelWriter);
+                renderPixel(new Point(i,j), pixelWriter);
             }
         }
     }
 
-    private void renderPixel(int x, int y, PixelWriter pixelWriter) {
-        pixelWriter.setColor(x, y, image.getPixelColor(x, y));
+    private void renderPixel(Point point, PixelWriter pixelWriter) {
+        pixelWriter.setColor(point.x, point.y, image.getPixelColor(point));
     }
 
 }

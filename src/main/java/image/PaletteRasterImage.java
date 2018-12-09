@@ -4,7 +4,6 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 import util.Window;
-import util.PixelColor;
 
 public class PaletteRasterImage extends RasterImage {
 
@@ -25,17 +24,17 @@ public class PaletteRasterImage extends RasterImage {
         indexesOfColors = new int[this.getWidth()][this.getHeight()];
     }
 
-    public Color getPixelColor(int x, int y){
-        Window.requiresValidCoordinates(x,y, this.getHeight(),this.getWidth());
-        int indexOfPixel = indexesOfColors[x][y];
+    public Color getPixelColor(Point point){
+        Window.requiresValidCoordinates(point, this.getHeight(),this.getWidth());
+        int indexOfPixel = indexesOfColors[point.x][point.y];
         return palette.get(indexOfPixel);
     }
 
-    public void setPixelColor(Color color, int x, int y){
-        PixelColor.requiresNonNullColor(color);
-        Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
-        if(!palette.contains(color)) palette.add(color);
-        indexesOfColors[x][y] = palette.indexOf(color);
+    public void setPixelColor(Pixel pixel){
+        Window.requiresNonNullPixelColor(pixel);
+        Window.requiresValidCoordinates(pixel, this.getHeight(),this.getWidth());
+        if(!palette.contains(pixel.getColor())) palette.add(pixel.getColor());
+        indexesOfColors[pixel.x][pixel.y] = palette.indexOf(pixel.getColor());
     }
 
     public void clearPixels(){

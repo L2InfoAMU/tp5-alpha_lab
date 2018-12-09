@@ -3,6 +3,8 @@ package image;
 import javafx.scene.paint.Color;
 
 import java.util.List;
+import java.util.Objects;
+
 import util.Window;
 
 public class VectorImage implements Image {
@@ -12,9 +14,7 @@ public class VectorImage implements Image {
 
     VectorImage(List<Shape> shapes, int width, int height){
 
-        if(shapes == null) throw new
-                IllegalArgumentException("Shapes cannot be null");
-
+        Objects.requireNonNull(shapes, "List of shapes cannot be null");
         Window.requiresStrictPositiveHeight(height);
         Window.requiresStrictPositiveWidth(width);
 
@@ -23,12 +23,12 @@ public class VectorImage implements Image {
         this.height = height;
     }
 
-    public Color getPixelColor(int x, int y){
+    public Color getPixelColor(Point point){
 
-        Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
+        Window.requiresValidCoordinates(point, this.getHeight(),this.getWidth());
 
         for (Shape shape : shapes) {
-            if (shape.contains(new Point(x,y)))
+            if (shape.contains(point))
                 return shape.getColor();
         }
         return Color.WHITE;

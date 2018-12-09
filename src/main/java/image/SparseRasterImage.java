@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 import java.util.HashMap;
 import java.util.Map;
 import util.Window;
-import util.PixelColor;
 
 public class SparseRasterImage extends RasterImage {
 
@@ -29,19 +28,18 @@ public class SparseRasterImage extends RasterImage {
             throw new IllegalArgumentException(("Cannot find pixel"));
     }
 
-    public Color getPixelColor(int x, int y)
+    public Color getPixelColor(Point point)
     {
-        Window.requiresValidCoordinates(x,y, this.getHeight(),this.getWidth());
-        Point point = new Point(x,y);
+        Window.requiresValidCoordinates(point, this.getHeight(),this.getWidth());
         requiresPresenceOfPoint(point);
         return pixelsMap.get(point);
     }
 
-    public void setPixelColor(Color color, int x, int y) {
-        PixelColor.requiresNonNullColor(color);
-        Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
-        Point point = new Point(x,y);
-        pixelsMap.put(point,color);
+    public void setPixelColor(Pixel pixel) {
+        Window.requiresNonNullPixelColor(pixel);
+        Window.requiresValidCoordinates(pixel, this.getHeight(),this.getWidth());
+        Point point = new Point(pixel.x,pixel.y);
+        pixelsMap.put(point,pixel.getColor());
     }
 
     public void clearPixels(){
