@@ -36,7 +36,6 @@ public class SparseRasterImage extends RasterImage {
     }
 
     public void setPixelColor(Pixel pixel) {
-        Window.requiresNonNullPixelColor(pixel);
         Window.requiresValidCoordinates(pixel, this.getHeight(),this.getWidth());
         Point point = new Point(pixel.x,pixel.y);
         pixelsMap.put(point,pixel.getColor());

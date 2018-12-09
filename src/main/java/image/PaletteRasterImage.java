@@ -31,7 +31,6 @@ public class PaletteRasterImage extends RasterImage {
     }
 
     public void setPixelColor(Pixel pixel){
-        Window.requiresNonNullPixelColor(pixel);
         Window.requiresValidCoordinates(pixel, this.getHeight(),this.getWidth());
         if(!palette.contains(pixel.getColor())) palette.add(pixel.getColor());
         indexesOfColors[pixel.x][pixel.y] = palette.indexOf(pixel.getColor());

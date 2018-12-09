@@ -25,7 +25,6 @@ public class BruteRasterImage extends RasterImage{
     }
 
     public void setPixelColor(Pixel pixel){
-        Window.requiresNonNullPixelColor(pixel);
         Window.requiresValidCoordinates(pixel, this.getHeight(),this.getWidth());
         pixels[pixel.x][pixel.y] = pixel.getColor();
     }

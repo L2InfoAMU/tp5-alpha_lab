@@ -30,12 +30,12 @@ public class Window {
             throw new IllegalArgumentException("The pixel is outside the window boundaries");
     }
 
-    public static void requiresNonNullPixelColor(Pixel pixel){
+    private static void requiresNonNullPixelColor(Pixel pixel){
         Objects.requireNonNull(pixel,"Pixel cannot be null");
         Objects.requireNonNull(pixel.getColor(),"Color of pixel cannot be null");
     }
 
-    public static void requiresNonNullPoint(Point point){
+    private static void requiresNonNullPoint(Point point){
         Objects.requireNonNull(point,"point cannot be null");
     }
 
