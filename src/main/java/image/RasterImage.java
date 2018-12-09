@@ -2,36 +2,19 @@ package image;
 
 import javafx.scene.paint.Color;
 import util.Matrices;
+import util.Window;
+import util.Pixel;
 
 public abstract class RasterImage implements Image {
 
     private int width;
     private int height;
 
-    protected void requiresNonNullColor(Color color){
-        if (color == null)
-            throw new NullPointerException("Color cannot be null");
-    }
-
-    protected void requiresStrictPositiveWidth(int width){
-        if(width < 0)
-            throw new IllegalArgumentException("width cannot be less or equal to 0");
-    }
-
-    protected void requiresStrictPositiveHeight(int height){
-        if(height < 0)
-            throw new IllegalArgumentException("height cannot be less or equal to 0");
-    }
-
-    protected void requiresValidCoordinates(int x, int y){
-        if(x<0 || y<0 || x>=this.getWidth() || y>=this.getHeight())
-            throw new IllegalArgumentException("x or y outside window bounds");
-    }
 
     public RasterImage(Color color, int width, int height){
-        requiresNonNullColor(color);
-        requiresStrictPositiveHeight(height);
-        requiresStrictPositiveWidth(width);
+        Pixel.requiresNonNullColor(color);
+        Window.requiresStrictPositiveHeight(height);
+        Window.requiresStrictPositiveWidth(width);
 
         setHeight(height);
         setWidth(width);
@@ -71,7 +54,7 @@ public abstract class RasterImage implements Image {
 
 
     public void setPixelsColor(Color color){
-        requiresNonNullColor(color);
+        Pixel.requiresNonNullColor(color);
 
         clearPixels();
         for(int i=0; i<this.getWidth();i++){
@@ -90,12 +73,12 @@ public abstract class RasterImage implements Image {
     }
 
     protected void setWidth(int width){
-        requiresStrictPositiveWidth(width);
+        Window.requiresStrictPositiveWidth(width);
         this.width = width;
     }
 
     protected void setHeight(int height){
-        requiresStrictPositiveHeight(height);
+        Window.requiresStrictPositiveHeight(height);
         this.height = height;
     }
 

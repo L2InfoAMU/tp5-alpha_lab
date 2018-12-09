@@ -1,7 +1,8 @@
 package image;
 
 import javafx.scene.paint.Color;
-import util.Matrices;
+import util.Window;
+import util.Pixel;
 
 public class BruteRasterImage extends RasterImage{
 
@@ -21,13 +22,13 @@ public class BruteRasterImage extends RasterImage{
     }
 
     public Color getPixelColor(int x, int y){
-        requiresValidCoordinates(x,y);
+        Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
         return pixels[x][y];
     }
 
     public void setPixelColor(Color color, int x, int y){
-        requiresNonNullColor(color);
-        requiresValidCoordinates(x,y);
+        Pixel.requiresNonNullColor(color);
+        Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
         pixels[x][y] = color;
     }
 

@@ -1,10 +1,11 @@
 package image;
 
 import javafx.scene.paint.Color;
-import util.Matrices;
 
 import java.util.HashMap;
 import java.util.Map;
+import util.Window;
+import util.Pixel;
 
 public class SparseRasterImage extends RasterImage {
 
@@ -30,21 +31,15 @@ public class SparseRasterImage extends RasterImage {
 
     public Color getPixelColor(int x, int y)
     {
-        requiresValidCoordinates(x,y);
-        Point point = new Point(x,y);
-        requiresPresenceOfPoint(point);
-        return pixelsMap.get(point);
-    }
-
-    public Color getPixel(int x, int y){
+        Window.requiresValidCoordinates(x,y, this.getHeight(),this.getWidth());
         Point point = new Point(x,y);
         requiresPresenceOfPoint(point);
         return pixelsMap.get(point);
     }
 
     public void setPixelColor(Color color, int x, int y) {
-        requiresNonNullColor(color);
-        requiresValidCoordinates(x,y);
+        Pixel.requiresNonNullColor(color);
+        Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
         Point point = new Point(x,y);
         pixelsMap.put(point,color);
     }

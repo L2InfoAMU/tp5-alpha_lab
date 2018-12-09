@@ -1,11 +1,10 @@
 package image;
 
 import javafx.scene.paint.Color;
-import util.Matrices;
-
-import java.awt.image.Raster;
 import java.util.ArrayList;
 import java.util.List;
+import util.Window;
+import util.Pixel;
 
 public class PaletteRasterImage extends RasterImage {
 
@@ -22,19 +21,19 @@ public class PaletteRasterImage extends RasterImage {
     }
 
     public void createRepresentation(){
-        palette = new ArrayList<Color>();
+        palette = new ArrayList<>();
         indexesOfColors = new int[this.getWidth()][this.getHeight()];
     }
 
     public Color getPixelColor(int x, int y){
-        requiresValidCoordinates(x,y);
+        Window.requiresValidCoordinates(x,y, this.getHeight(),this.getWidth());
         int indexOfPixel = indexesOfColors[x][y];
         return palette.get(indexOfPixel);
     }
 
     public void setPixelColor(Color color, int x, int y){
-        requiresNonNullColor(color);
-        requiresValidCoordinates(x,y);
+        Pixel.requiresNonNullColor(color);
+        Window.requiresValidCoordinates(x,y,this.getHeight(),this.getWidth());
         if(!palette.contains(color)) palette.add(color);
         indexesOfColors[x][y] = palette.indexOf(color);
     }
